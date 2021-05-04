@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../styles/components/app.css';
+const App = () => <h1>Hola Mundo</h1>;
 
-export default function App() {
-  return <div>Hola pedro</div>;
-}
+export default App;
