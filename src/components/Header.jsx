@@ -7,8 +7,6 @@ export default function Header() {
   const { state } = useContext(AppContext);
   const { cart } = state;
 
-  console.log(state);
-
   return (
     <div className="Header">
       <Link to="/">
