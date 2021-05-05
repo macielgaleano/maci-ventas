@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../context/AppContext';
 import { Link } from 'react-router-dom';
 import '../styles/components/Header.css';
 
 export default function Header() {
+  const { state } = useContext(AppContext);
+  const { cart } = state;
+
+  console.log(state);
+
   return (
     <div className="Header">
       <Link to="/">
@@ -16,6 +22,7 @@ export default function Header() {
             aria-hidden="true"
           ></i>
         </Link>
+        {cart.length > 0 && <div className="Header-alert">{cart.length}</div>}
       </div>
     </div>
   );
