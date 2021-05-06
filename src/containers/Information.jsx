@@ -3,14 +3,14 @@ import '../styles/components/Information.css';
 import AppContext from '../context/AppContext';
 import { Link } from 'react-router-dom';
 
-const Information = () => {
+const Information = ({ history }) => {
   const { state, addToBuyer } = useContext(AppContext);
   const form = useRef(null);
 
   const { cart } = state;
 
   const handleSubmit = () => {
-    const formData = newFormData(form.current);
+    const formData = new FormData(form.current);
     const buyer = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -23,6 +23,7 @@ const Information = () => {
       phone: formData.get('phone'),
     };
     addToBuyer(buyer);
+    history.push('/checkout/payment');
   };
 
   return (
