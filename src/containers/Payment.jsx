@@ -9,9 +9,8 @@ const Payment = ({ history }) => {
 
   const paypalOptions = {
     clientId:
-      'AaCvaE6R16MQZzK3K4QqRSHfnD4fxTHXBoszySF8Tes300K95ck9rZSKe_zAZHAXXZkENoKMk8gXuys7',
+      'ATM-5Fh-mjlXWIxy8G4ZOHMqgwzQ7oVsM_uK_e7CrOd_HtuQhjKF0ZNccHW74S_IcqONb35CQ2n4AtHh',
     intent: 'capture',
-    currency: 'USD',
   };
 
   const buttonStyles = {
@@ -19,8 +18,9 @@ const Payment = ({ history }) => {
     shape: 'rect',
   };
 
+  console.log(cart);
+
   const handlePaymentSuccess = (data) => {
-    console.log(data);
     if (data.status === 'COMPLETED') {
       const newOrder = {
         buyer: buyer,
@@ -43,12 +43,14 @@ const Payment = ({ history }) => {
       <div className="Payment-content">
         <h3>Resumen del pedido:</h3>
         {cart.map((item) => {
-          <div className="Payment-Item" key={item.title}>
-            <div className="PaymentElement">
-              <h4>{item.title}</h4>
-              <span>$ {item.price}</span>
+          return (
+            <div className="Payment-Item" key={item.title}>
+              <div className="Payment-Element">
+                <h4>{item.title}</h4>
+                <span>$ {item.price}</span>
+              </div>
             </div>
-          </div>;
+          );
         })}
         <div className="Payment-button">
           <PayPalButton
